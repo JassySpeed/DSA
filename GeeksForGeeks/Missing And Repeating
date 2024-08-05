@@ -1,0 +1,36 @@
+class Solution{
+public:
+    vector<int> findTwoElement(vector<int> arr, int n) {
+        
+        vector<int> ans(2);
+        
+        // decrease values by 1
+        for(int i=0;i<n;i++)
+        arr[i]--;
+        
+        for(int i=0;i<n;i++)
+        arr[arr[i]%n]+=n;
+        
+        // repeating
+        for(int i=0;i<n;i++)
+        {
+            if(arr[i]/n==2)
+            {
+                ans[0]=i+1;
+                break;
+            }
+        }
+        
+        // Missing
+        for(int i=0;i<n;i++)
+        {
+            if(arr[i]/n==0)
+            {
+                ans[1]=i+1;
+                break;
+            }
+        }
+        
+        return ans;
+    }
+};
