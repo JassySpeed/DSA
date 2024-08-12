@@ -1,0 +1,24 @@
+// Binary no. to Octal no. //
+
+    int num;
+    cout<<"Enter the no. : ";
+    cin>>num;
+    int rem,mul=1,ans=0;
+    int Newrem,mull=1,fina=0;
+    while(num>0)
+    {
+        rem=num%10;
+        num/=10;
+        ans+=rem*mul;
+        mul*=2;
+
+    }
+    cout<<ans;
+    while(ans>0)
+    {
+        Newrem=ans%8;
+        ans/=8;
+        fina+=Newrem*mull;
+        mull*=10;
+    }
+    cout<<Newrem;

@@ -1,0 +1,11 @@
+//While Loop// 
+
+    int n,i;     //intialize 
+    cout<<"Enter the no. : ";
+    cin>>n;
+    i=1;
+    while(i<=10)  //break
+    {
+        cout<<n*i<<endl;
+        i=i+1;    //update
+    }

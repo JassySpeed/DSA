@@ -1,0 +1,115 @@
+// By Two pointers
+
+// Time Complexity - Higher than O(n)
+// Space Complexity - O(1)
+
+class Solution {
+public:
+    int strStr(string haystack, string needle) {
+        int n=haystack.size();
+        int m=needle.size();
+
+        if(m>n)
+        return -1;
+
+        int first=0,second=0,ans=0;
+        while(first<n && second<m)
+        {
+            if(haystack[first]==needle[second])
+            {
+                first++;
+                second++;
+            }
+            else if(haystack[first]!=needle[second])
+            {
+                second=0;
+                ans++;
+                first=ans;
+                
+            }
+        }
+
+        if(second==m)
+        return first-m;
+        else
+        return -1;        
+    }
+};
+
+//////////////////////////////////////////////////////////////////////////////
+
+// By KMP algorithm
+// Time complexity - O(n+m)
+// Space complexity - O(m)
+
+class Solution {
+public:
+
+    void lpsfind(vector<int>&lps , string s)
+    {
+        int pre=0,suf=1;
+	    
+	    while(suf<s.size())
+	    {
+	        if(s[pre]==s[suf])
+	        {
+	            lps[suf]=pre+1;
+	            suf++;
+	            pre++;
+	        }
+	        else
+	        {
+	            if(pre==0)
+	            {
+	                lps[suf]=0;
+	                suf++;
+	            }
+	            else
+	            {
+	                pre=lps[pre-1];
+	            }
+	        }
+	    }
+    }
+    int strStr(string haystack, string needle) {
+        int n=haystack.size();
+        int m=needle.size();
+
+        // if(m>n)
+        // return -1;
+
+        vector<int> lps(m,0);
+        lpsfind(lps,needle);
+        
+
+
+        int first=0,second=0;
+        while(second<m && first<n)
+        {
+            if(haystack[first]==needle[second])
+            {
+                first++;
+                second++;
+            }
+            else
+            {
+                if(second==0)
+                {
+                    first++;
+                }
+                else
+                {
+                    second=lps[second-1];
+                }
+            }
+        }
+
+
+        if(second==m)
+        return first-second;
+       
+
+        return -1;
+
+    }
+};

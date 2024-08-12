@@ -1,0 +1,19 @@
+//Decimal to Octal//
+
+    int num;
+    cout<<"Enter the no. : ";
+    cin>>num;
+    int rem;
+    int ans=0,mul=1;
+    while(num>0)
+    {
+        //remainder
+        rem=num%8;
+        //new number
+        num/=10;
+        //answer
+        ans+=rem*mul;
+        //multply
+        mul*=10;
+    }
+    cout<<ans;

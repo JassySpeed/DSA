@@ -1,0 +1,19 @@
+//Decimal to Binary//
+
+    int num;
+    cout<<"Enter the no. : ";
+    cin>>num;
+    int rem;
+    int ans=0,mul=1;
+    while(num>0)
+    {
+        //remainder
+        rem=num%2;
+        //new number
+        num/=2;
+        //answer
+        ans+=rem*mul;
+        //multply
+        mul*=10;
+    }
+    cout<<ans;

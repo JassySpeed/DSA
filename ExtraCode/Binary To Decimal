@@ -1,0 +1,19 @@
+//Binary to Decimal//
+
+    int num;
+    cout<<"Enter the no. : ";
+    cin>>num;
+    int rem;
+    int ans=0,mul=1;
+    while(num>0)
+    {
+        //remainder
+        rem=num%10;
+        //new number
+        num/=10;
+        //answer
+        ans+=rem*mul;
+        //multply
+        mul*=2;
+    }
+    cout<<ans;

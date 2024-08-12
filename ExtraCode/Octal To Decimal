@@ -1,0 +1,12 @@
+int num;
+    cout<<"Enter the no. : ";
+    cin>>num;
+    int ans=0,mul=1,rem;
+    while(num>0)
+    {
+        rem=num%10;
+        num/=10;
+        ans+=rem*mul;
+        mul*=8;
+    }
+    cout<<ans;

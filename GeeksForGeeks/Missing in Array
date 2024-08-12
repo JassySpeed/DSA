@@ -1,0 +1,19 @@
+class Solution{
+  public:
+    int missingNumber(vector<int>& array, int n) {
+        int sum=0;
+        // SUM OF ELEMENT IN ARRAY
+        for(int i=0;i<n-1;i++)
+        {
+            sum+=array[i];
+        }
+        
+        //SUM OF N NUMBER
+        int ans;
+        ans=n*(n+1)/2;
+        
+        return ans-sum;
+        
+    }
+};
+

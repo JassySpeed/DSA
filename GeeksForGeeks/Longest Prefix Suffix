@@ -1,0 +1,35 @@
+class Solution{
+  public:		
+	int lps(string s) {
+	    // Your code goes here
+	    
+	   // int n=s.size();
+	    vector<int> lps(s.size(),0);
+	    int n=s.size();
+	    int pre=0,suf=1;
+	    
+	    while(suf<n)
+	    {
+	        if(s[pre]==s[suf])
+	        {
+	            lps[suf]=pre+1;
+	            suf++;
+	            pre++;
+	        }
+	        else
+	        {
+	            if(pre==0)
+	            {
+	                lps[suf]=0;
+	                suf++;
+	            }
+	            else
+	            {
+	                pre=lps[pre-1];
+	            }
+	        }
+	    }
+	    
+	    return lps[n-1];
+	}
+};
