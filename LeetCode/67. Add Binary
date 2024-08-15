@@ -1,0 +1,56 @@
+class Solution {
+public:
+    string addBinary(string a, string b) {
+
+        int index1=a.size()-1;
+        int index2=b.size()-1;
+        int sum,carry=0;
+        string ans;
+
+        while(index1>=0 && index2>=0)
+        {
+            sum=(a[index1]-'0')+(b[index2]-'0')+carry;
+            carry=sum/2;
+            char ch='0'+sum%2;
+            ans+=ch;
+            index1--;
+            index2--;
+        }
+
+        while(index1>=0)
+        {
+            sum=(a[index1]-'0')+carry;
+            carry=sum/2;
+            char ch='0'+sum%2;
+            ans+=ch;
+            index1--;
+        }
+
+        while(index2>=0)
+        {
+            sum=(b[index2]-'0')+carry;
+            carry=sum/2;
+            char ch='0'+sum%2;
+            ans+=ch;
+            index2--;
+        }
+
+        if(carry)
+        ans+='1';
+
+        // reverse(ans.begin(),ans.end());
+        int m=ans.size();
+
+        int start=0,end=m-1;
+        while(start<end)
+        {
+            swap(ans[start],ans[end]);
+            start++,end--;
+        }
+
+        return ans;
+
+
+        
+    }
+};
