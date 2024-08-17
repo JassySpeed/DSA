@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int climbStairs(int n) {
+
+       int pre=1;
+       int curr=1;
+        int future=1;
+       for(int i=2;i<=n;i++)
+       {
+            future=pre+curr;
+            pre=curr;
+            curr=future;
+       }
+
+        return future;
+        
+    }
+};
