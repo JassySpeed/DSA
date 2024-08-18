@@ -1,0 +1,42 @@
+class Solution {
+  public:
+    int isValid(string str) {
+        
+        
+        string ans;
+        int count=0;
+        int i;
+        for( i=0;i<str.size();i++)
+        {
+            ans+=str[i];
+            if(str[i]=='.')
+            {
+                if(stoi(ans)<0 || stoi(ans)>255)
+                {
+                   return false;
+                   
+                }
+                ans="";
+                count++;
+            }
+            
+            
+            
+        }
+         
+                if(stoi(ans)<0 || stoi(ans)>255)
+                {
+                   return false;
+                   
+                }
+            
+        
+        
+        if(count<3 || count>3)
+        return false;
+        else
+        return true;
+        
+        
+    }
+};
