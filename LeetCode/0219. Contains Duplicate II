@@ -1,0 +1,34 @@
+class Solution {
+public:
+    bool containsNearbyDuplicate(vector<int>& nums, int k) {
+
+        int n=nums.size();
+
+        int ans=0;
+        for(int i=0;i<n;i++)
+        {
+            for(int j=i+1;j<n;j++)
+            {
+                if(abs(i-j)<=k)
+                {
+                    if(nums[i]==nums[j])
+                    {
+                        ans++;
+                        break;
+                    }
+                  
+                }
+                  else
+                    break;
+              
+            }
+              if(ans>0)
+                {
+                    return true;
+                    break;
+                }
+        }
+        return false;
+        
+    }
+};
