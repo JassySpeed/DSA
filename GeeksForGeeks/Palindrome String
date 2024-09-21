@@ -1,0 +1,24 @@
+//User function template for C++
+class Solution{
+public:	
+	
+	
+	int isPalindrome(string s)
+	{
+	    // Your code goes here
+	    int n=s.size();
+	    int start=0,end=n-1;
+	    while(start<end)
+	    {
+	        if(s[start]!=s[end])
+	        return 0;
+	        else
+	        {
+	            start++;
+	            end--;
+	        }
+	    }
+	    return 1;
+	}
+
+};
