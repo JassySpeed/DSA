@@ -1,0 +1,38 @@
+class Solution{
+    public:
+    
+    //Function to rotate an array by d elements in counter-clockwise direction. 
+    void rotateArr(int arr[], int d, int n){
+        d=d%n;
+        int start=0,end=n-1;
+        
+        while(start<end)
+        {
+            swap(arr[start],arr[end]);
+            start++;
+            end--;
+        }
+        
+        start=n-d;
+        end=n-1;
+        
+        while(start<end)
+        {
+            swap(arr[start],arr[end]);
+            start++;
+            end--;
+        }
+        
+        start=0;
+        end=n-d-1;
+        
+        while(start<end)
+        {
+            swap(arr[start],arr[end]);
+            start++;
+            end--;
+        }
+        
+        // return arr;
+    }
+};
