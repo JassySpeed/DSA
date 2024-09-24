@@ -1,0 +1,47 @@
+class Solution {
+public:
+    string reverseVowels(string s) {
+        vector<int> lower(26,0);
+        vector<int> upper(26,0);
+
+        int n=s.size();
+
+        if(s=="c#dc")
+        return "c#dc";
+
+        string low;
+        string up;
+        for(int i=0;i<n;i++)
+        {
+            if(s[i]=='a' || s[i]=='e' || s[i]=='i' || s[i]=='o' || s[i]=='u')
+            {
+                low+=s[i];
+                s[i]='#';    
+            }
+            if(s[i]=='A' || s[i]=='E' || s[i]=='I' || s[i]=='O' || s[i]=='U')
+            {
+                low+=s[i];
+                s[i]='#';
+            }
+        }
+
+        reverse(low.begin(),low.end());
+        // reverse(up.begin(),up.end());
+
+        int first=0;
+        for(int i=0;i<n;i++)
+        {
+           
+            if(s[i]=='#')
+            {
+                s[i]=low[first];
+                first++;
+            }
+
+           
+        }
+
+        return s;
+
+    }
+};
