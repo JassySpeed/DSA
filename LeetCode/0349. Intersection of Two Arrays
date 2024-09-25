@@ -1,0 +1,46 @@
+class Solution {
+public:
+    vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+
+        // 1st approach
+        // vector<int> v;
+        // set<int> s;
+
+        // for(int i=0;i<nums1.size();i++)
+        // {
+        //     for(int j=0;j<nums2.size();j++)
+        //     {
+        //         if(nums1[i]==nums2[j])
+        //         {
+        //             s.insert(nums1[i]);
+        //             break;
+        //         }
+
+        //     }
+        // }
+        // v.assign(s.begin(),s.end());
+
+        // return v;
+
+        //2 approach
+        vector<int> ans;
+        sort(nums1.begin(),nums1.end());
+        sort(nums2.begin(),nums2.end());
+
+        for(int i=0;i<nums1.size();i++)
+        {
+            if(i>0 && nums1[i]==nums1[i-1])
+            {
+                continue;
+            }
+        
+            int num=nums1[i];
+            if(binary_search(nums2.begin(),nums2.end(),num))
+            ans.push_back(num);
+
+        }
+
+        return ans;
+
+    }
+};
