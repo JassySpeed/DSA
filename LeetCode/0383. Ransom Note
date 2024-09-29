@@ -1,0 +1,36 @@
+class Solution {
+public:
+    bool canConstruct(string r, string mag) {
+        
+        int n=r.size();
+        int m=mag.size();
+
+    vector<int> forram(26,0);
+    vector<int> formag(26,0);
+
+    for(int i=0;i<n;i++)
+    {
+        forram[r[i]-'a']++;
+    }
+
+    for(int i=0;i<m;i++)
+    {
+        formag[mag[i]-'a']++;
+    }
+
+    int first=0,second=0;
+
+    while(first<26 && second<26)
+    {
+        if(forram[first]<=formag[second])
+        {
+            first++;
+            second++;
+        }
+        else
+        return false;
+    }
+    return true;
+    }
+
+};
