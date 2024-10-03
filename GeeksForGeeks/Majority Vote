@@ -1,0 +1,33 @@
+class Solution {
+  public:
+    // Function to find the majority elements in the array
+    vector<int> findMajority(vector<int>& nums) {
+        // Your code goes here.
+        int n=nums.size();
+        sort(nums.begin(),nums.end());
+        
+        
+        vector<int> fina;
+        int ans=0;
+        for(int i=0;i<n;i++)
+        {
+            if(nums[i]==nums[i+1])
+            ans++;
+            else
+            ans=0;
+            
+            if(ans==n/3)
+            {
+                fina.push_back(nums[i]);
+            }
+        }
+        
+        if(fina.size()==0)
+        {
+            fina.push_back(-1);
+            return fina;
+        }
+        else
+        return fina;
+    }
+};
