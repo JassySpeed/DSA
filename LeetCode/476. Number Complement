@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int findComplement(int num) {
+        
+        
+        int rem=0,i=0,ans=0;
+        while(num>0)
+        {
+            rem=num%2;
+            num/=2;
+
+            if(rem==0)
+            rem=1;
+            else
+            rem=0;
+
+            ans+=rem*pow(2,i);
+            i++;
+        }
+
+        return ans;
+        
+
+        
+    }
+};
