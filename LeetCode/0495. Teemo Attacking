@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int findPoisonedDuration(vector<int>& time, int dura) {
+        int n=time.size();
+        int ans=0;
+        for(int i=0;i<n-1;i++)
+        {
+            if((time[i]+dura)<time[i+1])
+            {
+                ans+=dura;
+            }
+            else
+            {
+                ans+=time[i+1]-time[i];
+            }
+        }
+
+        ans+=dura;
+
+        return ans;
+        
+    }
+};
