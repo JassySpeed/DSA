@@ -1,0 +1,32 @@
+class Solution {
+public:
+    bool checkRecord(string s) {
+        int n=s.size();
+
+        int late=0;
+        int absent=0;
+        for(int i=0;i<n;i++)
+        {
+            if(s[i]=='A')
+            {
+                absent++;
+                late=0;  
+            }
+            else if(s[i]=='L')
+            {
+                late++;
+            }
+            else
+            late=0;
+
+            if(late==3)
+            return false;
+            else if(absent==2)
+            return false;
+
+        }
+
+        return true;
+        
+    }
+};
