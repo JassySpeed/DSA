@@ -1,0 +1,99 @@
+//User function Template for C++
+
+class Solution
+{
+    public:
+    //Function to perform case-specific sorting of strings.
+    string caseSort(string s, int n)
+    {
+        vector<int> lower(26,0);
+        vector<int> upper(26,0);
+        
+        for(int i=0;i<n;i++)
+        {
+            if(s[i]>='a')
+            {
+                lower[s[i]-'a']++;
+                s[i]='#';
+            }
+            else
+            {
+                upper[s[i]-'A']++;
+                s[i]='@';
+            }
+        }
+        
+        string ans;
+        string amy;
+        for(int i=0;i<26;i++)
+        {
+            char ch=i+'a';
+            while(lower[i])
+            {
+                ans+=ch;
+                lower[i]--;
+            }
+        }
+        
+        for(int i=0;i<26;i++)
+        {
+            char ch=i+'A';
+            while(upper[i])
+            {
+                amy+=ch;
+                upper[i]--;
+            }
+        }
+        
+        
+        // for(int i=0;i<n;i++)
+        // {
+        //     if(s[i]=='#')
+        //     {
+        //         s[i]=
+        //     }
+        // }
+        
+        int a=0;
+        int b=0;
+        while(a<ans.size())
+        {
+            if(s[b]=='#')
+            {
+               s[b]=ans[a];
+               a++;
+            }
+            
+            // else if(s[b]=='@')
+            // {
+            //     s[b]=ans[a];
+            //     a++;
+            // }
+            b++;
+        }
+        
+         a=0;
+         b=0;
+        while(a<amy.size())
+        {
+            if(s[b]=='@')
+            {
+               s[b]=amy[a];
+               a++;
+            }
+            
+            // else if(s[b]=='@')
+            // {
+            //     s[b]=ans[a];
+            //     a++;
+            // }
+            b++;
+        }
+        
+        
+        return s;
+        
+        
+        
+    }
+};
