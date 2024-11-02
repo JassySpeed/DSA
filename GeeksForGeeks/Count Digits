@@ -1,0 +1,23 @@
+class Solution{
+public:
+    int evenlyDivides(int n){
+        //code here
+        int rem=0,ans,count=0,nums=n;
+        while(n>0)
+        {
+            rem=n%10;
+            n/=10;
+            if(rem==0)
+            {
+                continue;
+            }
+            else
+            {
+                if(nums%rem==0)
+                count++;
+            }
+            
+        }
+        return count;
+    }
+};
