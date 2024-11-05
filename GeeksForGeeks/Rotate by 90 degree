@@ -1,0 +1,29 @@
+// User function template for C++
+
+/* matrix : given input matrix, you are require
+ to change it in place without using extra space */
+void rotate(vector<vector<int> >& mat) {
+    // Your code goes here
+    int row=mat.size();
+    int col=mat[0].size();
+    
+    for(int i=0;i<row-1;i++)
+    {
+        for(int j=i+1;j<col;j++)
+        {
+            swap(mat[i][j],mat[j][i]);
+        }
+    }
+    
+    int start=0;
+    int end=col-1;
+    for(int i=0;i<row/2;i++)
+    {
+        for(int j=0;j<row;j++)
+        {
+            swap(mat[j][start],mat[j][end]);
+        }
+        start++;
+        end--;
+    }
+}
