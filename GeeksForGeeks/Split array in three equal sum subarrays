@@ -1,0 +1,62 @@
+// User function Template for C++
+//  Class Solution to contain the method for solving the problem.
+class Solution {
+  public:
+    // Function to determine if array arr can be split into three equal sum sets.
+    vector<int> findSplit(vector<int>& arr) {
+        // code here
+        int n=arr.size();
+        vector<int>ans;
+        vector<int>pre(n);
+        pre[0]=arr[0];
+        
+        vector<int>suf(n);
+        suf[n-1]=arr[n-1];
+        
+        
+        for(int i=1;i<n;i++)
+        {
+            pre[i]=pre[i-1]+arr[i];
+        }
+        
+        for(int i=n-2;i>=0;i--)
+        {
+            suf[i]=suf[i+1]+arr[i];
+        }
+        
+        int start=0;
+        int end=n-1;
+        
+        while(start<n && end>=0)
+        {
+            if(pre[start]<suf[end])
+            start++;
+            else if(pre[start]>suf[end])
+            end--;
+            else
+            {
+                int total=pre[n-1];
+                if(total-pre[start]-suf[end]==pre[start]){
+                    ans.push_back(start);
+                    ans.push_back(end-1);
+                    break;
+                }
+                start++;
+                end--;
+                
+            }
+        }
+        if(ans.size()==0)
+        {
+            ans.push_back(-1);
+            ans.push_back(-1);
+            return ans;
+            
+        }
+        else
+        return ans;
+
+        return ans;
+   
+    }
+};
