@@ -1,0 +1,42 @@
+class Solution {
+public:
+    bool rotateString(string s, string goal) {
+        int n=s.size();
+        int m=goal.size();
+
+        if(m<n)
+        return false;
+
+        string ans;
+        ans+=s;
+        ans+=s;
+
+        int first=0;
+        int second=0;
+        int fina=0;
+
+        while(first<ans.size())
+        {
+            if(ans[first]==goal[second])
+            {
+                first++;
+                second++;
+            }
+            else
+            {
+                second=0;
+                first=fina;
+                fina++;
+
+            }
+
+            if(second==m)
+            {
+                return true;
+            }
+        }
+
+        return false;
+        
+    }
+};
