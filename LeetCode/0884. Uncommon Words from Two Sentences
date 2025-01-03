@@ -1,0 +1,73 @@
+class Solution {
+public:
+    vector<string> uncommonFromSentences(string s1, string s2) {
+        
+        int n=s1.size();
+        int m=s2.size();
+
+        string ans;
+        vector<string> for_s1;
+        for(int i=0;i<n;i++)
+        {
+            ans+=s1[i];
+            if(s1[i]==' ')
+            {
+                ans.pop_back();
+                for_s1.push_back(ans);
+                ans="";
+            }
+            
+        }
+        for_s1.push_back(ans);
+        ans="";
+
+///////
+
+        vector<string> for_s2;
+        string lol;
+        for(int i=0;i<m;i++)
+        {
+            lol+=s2[i];
+            if(s2[i]==' ')
+            {
+                lol.pop_back();
+                for_s2.push_back(lol);
+                lol="";
+            }
+        }
+        for_s2.push_back(lol);
+        lol="";
+
+///////
+
+   vector<string> fina=for_s1;
+
+   for(int i=0;i<for_s2.size();i++)
+   {
+        fina.push_back(for_s2[i]);
+   }
+
+    vector<string> yoo;
+    for(int i=0;i<fina.size();i++)
+    {
+        int j;
+        for(j=0;j<fina.size();j++)
+        {
+            if(i!=j)
+            {
+                if(fina[i]==fina[j])
+                {
+                    break;
+                }
+            }   
+        }
+        if(j==fina.size() )
+        yoo.push_back(fina[i]);
+    }
+
+
+
+        return yoo;
+        
+    }
+};
