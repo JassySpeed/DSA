@@ -1,0 +1,74 @@
+class Solution {
+public:
+
+void merge(vector<int> &nums, int start, int mid, int end)
+{
+    vector<int> ans(end-start+1);
+    int left=start;
+    int right=mid+1;
+    int index=0;
+
+    while(left<=mid && right<=end)
+    {
+        if(nums[left]<=nums[right])
+        {
+            ans[index]=nums[left];
+            index++;
+            left++;
+        }
+        else
+        {
+            ans[index]=nums[right];
+            index++;
+            right++;
+        }
+    }
+
+    while(left<=mid)
+    {
+        ans[index]=nums[left];
+        index++;
+        left++;
+    }
+
+    while(right<=end)
+    {
+        ans[index]=nums[right];
+        index++;
+        right++;
+    }
+
+    index=0;
+    while(start<=end)
+    {
+        nums[start]=ans[index];
+        start++;
+        index++;
+    }
+
+
+
+}
+
+
+void merge_sort(vector<int> &nums, int start, int end)
+{
+    if(start==end)
+    return ;
+
+    int mid=start+(end-start)/2;
+    merge_sort(nums,start,mid);
+    merge_sort(nums,mid+1,end);
+    merge(nums,start,mid,end);
+
+}
+
+
+    vector<int> sortArray(vector<int>& nums) {
+
+    int n=nums.size();
+    merge_sort(nums,0,n-1);
+    return nums;
+        
+    }
+};
