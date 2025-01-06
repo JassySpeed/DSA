@@ -1,0 +1,29 @@
+class Solution {
+  public:
+    vector<int> sumClosest(vector<int>& arr, int target) {
+        // code here
+        int n=arr.size();
+        sort(arr.begin(),arr.end());
+        int start=0;
+        int end=n-1;
+        int diff=INT_MAX;
+        vector<int> ans;
+        while(start<end)
+        {
+            int pairsum=arr[start]+arr[end];
+            if(abs(target-pairsum)<diff)
+            {
+                diff=min(abs(target-pairsum),diff);
+                ans={arr[start],arr[end]};
+            }
+            
+            if(pairsum>target)
+            end--;
+            else if(pairsum<target)
+            start++;
+            else
+            return ans;
+        }
+        return ans;
+    }
+};
