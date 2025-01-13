@@ -1,0 +1,25 @@
+class Solution {
+
+  public:
+    int maxWater(vector<int> &arr) {
+        // code here
+        int n=arr.size();
+        int max_area=0;
+        
+        int start=0;
+        int end=n-1;
+        while(start<end)
+        {
+            int area=min(arr[start],arr[end])*(end-start);
+            max_area=max(area,max_area);
+            
+            if(arr[start]<arr[end])
+            start++;
+            else
+            end--;
+        }
+        
+        return max_area;
+        
+    }
+};
