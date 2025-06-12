@@ -1,0 +1,35 @@
+/*
+class Node {
+public:
+    int data;
+    Node* left;
+    Node* right;
+
+    Node(int val) {
+        data = val;
+        left = right = NULL;
+    }
+};
+*/
+class Solution {
+  public:
+  
+  int h(Node *root)
+  {
+      if(root==NULL)
+      {
+          return 0;
+      }
+
+      return 1+max(h(root->left),h(root->right));
+  }
+  
+    int height(Node* node) {
+        // code here
+        // int count=0;
+        // int check=INT_MIN;
+        return h(node)-1;
+        
+        // return check-1;
+    }
+};
