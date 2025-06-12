@@ -1,0 +1,70 @@
+/*
+
+Definition for Binary Tree Node
+struct Node
+{
+    int data;
+    struct Node* left;
+    struct Node* right;
+
+    Node(int x){
+        data = x;
+        left = right = NULL;
+    }
+};
+*/
+
+class Solution {
+  public:
+    int getSize(Node* node) {
+        // code here
+        
+        if(node==NULL)
+        return 0;
+        
+        return 1+getSize(node->left)+getSize(node->right);
+        
+    }
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//Another Solution
+/*
+
+Definition for Binary Tree Node
+struct Node
+{
+    int data;
+    struct Node* left;
+    struct Node* right;
+
+    Node(int x){
+        data = x;
+        left = right = NULL;
+    }
+};
+*/
+
+class Solution {
+  public:
+  
+  void pre(Node *root, int &count)
+  {
+      if(root==NULL)
+      return ;
+        
+      count++;
+      pre(root->left,count);
+      pre(root->right,count);
+    
+  }
+  
+    int getSize(Node* node) {
+        // code here
+        int count=0;
+        pre(node,count);
+        
+        return count;
+    }
+};
