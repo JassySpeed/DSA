@@ -1,0 +1,33 @@
+// User function Template for C++
+
+class Solution {
+  public:
+    vector<int> largestValues(Node* root) {
+        // code here
+        queue<Node*> q;
+        q.push(root);
+        
+        Node *temp;
+        vector<int> ans;
+        while(!q.empty())
+        {
+            int n=q.size();
+            int check=INT_MIN;
+            for(int i=0;i<n;i++)
+            {
+                temp=q.front();
+                q.pop();
+                check=max(check,temp->data);
+                
+                if(temp->left)
+                q.push(temp->left);
+                
+                if(temp->right)
+                q.push(temp->right);
+            }
+            ans.push_back(check);
+        }
+        
+        return ans;
+    }
+};
