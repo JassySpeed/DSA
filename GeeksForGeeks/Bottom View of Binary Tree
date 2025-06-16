@@ -1,0 +1,55 @@
+/*
+struct Node
+{
+    int data;
+    Node* left;
+    Node* right;
+};
+*/
+
+class Solution {
+  public:
+  
+void find(Node *root, int &l, int &r, int pos)
+{
+    if(!root)
+    return ;
+    
+    l=min(l,pos);
+    r=max(r,pos);
+    
+    find(root->left,l,r,pos-1);
+    find(root->right,l,r,pos+1);
+}
+
+
+void bview(Node *root, int count, int level, unordered_map<int,int> &map, vector<int> &ans, int left)
+{
+    if(!root)
+    return ;
+    
+    if(map.find(count)==map.end() || map[count]<level)
+    {
+        map[count]=level;
+        ans[count+left]=root->data;
+    }
+    
+    bview(root->right,count+1,level+1,map,ans,left);
+    bview(root->left,count-1,level+1,map,ans,left);
+}
+
+  
+    vector<int> bottomView(Node *root) {
+        // Your Code Here
+        int l=0;
+        int r=0;
+        int pos=0;
+        find(root,l,r,pos);
+        
+        vector<int> ans((r-l)+1);
+        unordered_map<int,int> map;
+        bview(root,0,0,map,ans,abs(l));
+        
+        return ans;
+    }
+};
