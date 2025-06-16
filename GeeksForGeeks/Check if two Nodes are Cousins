@@ -1,0 +1,81 @@
+/*Complete the function below
+Node is as follows:
+struct Node {
+    int data;
+    Node *left;
+    Node *right;
+
+    Node(int val) {
+        data = val;
+        left = right = NULL;
+    }
+};
+*/
+class Solution {
+  public:
+  
+bool check(Node *root, int x, int y)
+{
+    if(!root)
+    return 0;
+    
+    if(root->left && root->right)
+    {
+        if((root->left->data==x || root->right->data==x) && (root->left->data==y || root->right->data==y))
+        return 1;
+    }
+    
+    return check(root->left,x,y)||check(root->right,x,y);
+}
+  
+    // Function to check if two nodes are cousins in a tree
+    bool isCousins(Node* root, int x, int y) {
+        // write code here
+        int a=-1,b=-2;
+        bool valid=false;
+        int level=0;
+        Node *temp;
+        
+        if(x==y)
+        return 0;
+        
+        if(root->data==x || root->data==y)
+        return 0;
+        
+        queue<Node*> q;
+        q.push(root);
+        
+        while(!q.empty())
+        {
+            int n=q.size();
+            while(n--)
+            {
+                temp=q.front();
+                q.pop();
+                
+                if(temp->data==x)
+                a=level;
+                
+                if(temp->data==y)
+                b=level;
+                
+                if(temp->left)
+                q.push(temp->left);
+                
+                if(temp->right)
+                q.push(temp->right);
+            }
+            level++;
+            if(a!=-1 && b!=-2)
+            break;
+        }
+        
+        if(a==b)
+        {
+            return !check(root,x,y);
+        }
+        else
+        return 0;
+        
+    }
+};
