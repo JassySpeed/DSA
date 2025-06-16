@@ -1,0 +1,57 @@
+/*
+struct Node
+{
+    int data;
+    Node* left;
+    Node* right;
+};
+*/
+class Solution {
+  public:
+  
+void check(Node *root, int pos,int &left, int &right)
+{
+    if(!root)
+    return ;
+    
+    left=min(left,pos);
+    right=max(right,pos);
+    
+    check(root->left,pos-1,left,right);
+    check(root->right,pos+1,left,right);
+}
+  
+  
+void tview(Node *root, int level,int count, unordered_map<int,int> &map, vector<int> &ans,int left)
+{
+    if(!root)
+    return ;
+    
+    if(map.find(count)==map.end() || map[count]>level)
+    {
+        map[count]=level;
+        ans[count+left]=root->data;
+        
+    }
+    
+    tview(root->left,level+1,count-1,map,ans,left);
+    tview(root->right,level+1,count+1,map,ans,left);
+}
+  
+    // Function to return a list of nodes visible from the top view
+    // from left to right in Binary Tree.
+    vector<int> topView(Node *root) {
+        // code here
+        
+        int left=0;
+        int right=0;
+        int pos=0;
+        check(root,pos,left,right);
+        
+        unordered_map<int,int> map;
+        vector<int> ans((right-left)+1);
+        tview(root,0,0,map,ans,abs(left));
+        
+        return ans;
+    }
+};
