@@ -1,0 +1,34 @@
+// User function Template for C++
+
+/* Tree Node
+struct Node {
+    int data;
+    Node* left;
+    Node* right;
+};
+*/
+class Solution {
+  public:
+    vector<int> preOrder(Node* root) {
+        // code here
+        stack<Node*>s;
+        s.push(root);
+        Node *temp;
+        vector<int> ans;
+        
+        while(!s.empty())
+        {
+            temp=s.top();
+            s.pop();
+            ans.push_back(temp->data);
+            
+            if(temp->right)
+            s.push(temp->right);
+            
+            if(temp->left)
+            s.push(temp->left);
+        }
+        
+        return ans;
+    }
+};
